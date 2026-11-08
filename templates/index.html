@@ -1,19 +1,474 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/test.css' %}" />
-    <title>Home</title>
-  </head>
-  <body>
-    <h1>Home :</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, dolore
-      magni. Sed pariatur libero numquam sit eaque, consequatur aliquid laborum
-      maiores nisi soluta laboriosam officiis! Provident dolore assumenda
-      aliquid cumque.
-    </p>
-  </body>
-</html>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-box">
+        <div class="hero-content">
+          <span class="hero-kicker">انتخابی فراتر از چهار دیوار</span>
+          <h1>خانه‌ای که با<br /><span>سبک زندگی‌ات</span> جور است.</h1>
+          <p>
+            برای پیدا کردن خانه‌ی بعدی‌ات لازم نیست بین صدها آگهی سردرگم شوی. ما
+            مسیر انتخاب را شفاف‌تر و مطمئن‌تر می‌کنیم.
+          </p>
+          <div class="hero-buttons">
+            <a class="btn btn-light" href="#properties"
+              >دیدن فایل‌های منتخب <span>←</span></a
+            ><a class="btn btn-outline btn-hero-outline" href="about.html"
+              >آشنایی با CIS</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="search-panel">
+        <form
+          class="search-form site-search"
+          id="propertySearchForm"
+          action="/properties/"
+          method="get"
+          role="search"
+          data-preview-mode="true"
+        >
+          <div class="form-field search-keyword">
+            <label for="propertySearch">دنبال چه ملکی هستید؟</label>
+            <input
+              id="propertySearch"
+              name="q"
+              type="search"
+              placeholder="مثلاً آپارتمان ولیعصر، ویلای باغمیشه..."
+              autocomplete="off"
+            />
+          </div>
+          <div class="form-field">
+            <label for="neighborhoodFilter">محله</label>
+            <select id="neighborhoodFilter" name="neighborhood">
+              <option value="">همه محله‌های تبریز</option>
+              <option value="valiasr">ولیعصر</option>
+              <option value="baghmisheh">باغمیشه</option>
+              <option value="abrasan">آبرسان</option>
+              <option value="roshdieh">رشدیه</option>
+              <option value="el-goli">ائل‌گلی</option>
+              <option value="basmenj">باسمنج</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="typeFilter">نوع ملک</label>
+            <select id="typeFilter" name="property_type">
+              <option value="">همه موارد</option>
+              <option value="apartment">آپارتمان</option>
+              <option value="villa">ویلا</option>
+              <option value="land">زمین</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit">
+            جست‌وجوی ملک <span>⌕</span>
+          </button>
+        </form>
+      </div>
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-icon">⌂</span>
+          <div><strong>۲۴۰+</strong><span>ملک بررسی‌شده</span></div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">♧</span>
+          <div><strong>۱۸۰+</strong><span>مشتری راضی</span></div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">◷</span>
+          <div><strong>۸ سال</strong><span>تجربه در بازار</span></div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">✧</span>
+          <div><strong>۲۴/۷</strong><span>همراهی و پاسخ‌گویی</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="properties">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">پیشنهادهای CIS</span>
+          <h2>ملک‌های منتخب این روزها</h2>
+          <p>
+            چند گزینه‌ی جذاب که با دقت از میان فایل‌های موجود انتخاب کرده‌ایم.
+          </p>
+        </div>
+        <span id="resultCount" class="muted">۶ ملک</span>
+      </div>
+      <div class="property-filters" aria-label="فیلتر نوع ملک">
+        <button class="filter-btn active" type="button" data-filter="all">
+          همه موارد
+        </button>
+        <button class="filter-btn" type="button" data-filter="apartment">
+          آپارتمان
+        </button>
+        <button class="filter-btn" type="button" data-filter="villa">
+          ویلا
+        </button>
+        <button class="filter-btn" type="button" data-filter="land">
+          زمین
+        </button>
+      </div>
+      <div class="property-grid" id="propertyGrid" aria-live="polite">
+        <article
+          class="property-card"
+          data-property-id="demo-001"
+          data-property-slug="apartment-valiasr"
+          data-type="apartment"
+          data-city="tabriz"
+          data-neighborhood="valiasr"
+          data-area="145"
+          data-price="18500000000"
+          data-bedrooms="3"
+          data-deal-type="sale"
+        >
+          <a
+            href="{% url 'property' %}"
+            aria-label="مشاهده جزئیات آپارتمان مدرن با چشم‌انداز شهر"
+          >
+            <div class="property-image">
+              <img
+                src="{% static 'images/apa.jpg' %}"
+                alt="تصویر آپارتمان مدرن با چشم‌انداز شهر"
+                loading="lazy"
+              />
+              <span class="property-tag">فروش ویژه</span>
+            </div>
+            <div class="property-body">
+              <div class="property-location">⌖ تبریز، ولیعصر</div>
+              <h3>آپارتمان مدرن با چشم‌انداز شهر</h3>
+              <div class="property-specs">
+                <span>▱ ۱۴۵ متر</span><span>▤ ۳ خواب</span
+                ><span>▣ ۱ پارکینگ</span>
+              </div>
+              <div class="property-bottom">
+                <div class="property-price">
+                  ۱۸٬۵۰۰٬۰۰۰٬۰۰۰ <small>تومان</small>
+                </div>
+                <span class="card-arrow">←</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <article
+          class="property-card"
+          data-property-id="demo-002"
+          data-property-slug="duplex-villa-baghmisheh"
+          data-type="villa"
+          data-city="tabriz"
+          data-neighborhood="baghmisheh"
+          data-area="320"
+          data-price="42000000000"
+          data-bedrooms="4"
+          data-deal-type="sale"
+        >
+          <a
+            href="property-2.html"
+            aria-label="مشاهده جزئیات ویلای دوبلکس با استخر اختصاصی"
+          >
+            <div class="property-image">
+              <img
+                src="{% static 'images/vila.avif' %}"
+                alt="تصویر ویلای دوبلکس با استخر اختصاصی"
+                loading="lazy"
+              />
+              <span class="property-tag">انتخاب خاص</span>
+            </div>
+            <div class="property-body">
+              <div class="property-location">⌖ تبریز، باغمیشه</div>
+              <h3>ویلای دوبلکس با استخر اختصاصی</h3>
+              <div class="property-specs">
+                <span>▱ ۳۲۰ متر</span><span>▤ ۴ خواب</span
+                ><span>▣ ۲ پارکینگ</span>
+              </div>
+              <div class="property-bottom">
+                <div class="property-price">
+                  ۴۲٬۰۰۰٬۰۰۰٬۰۰۰ <small>تومان</small>
+                </div>
+                <span class="card-arrow">←</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <article
+          class="property-card"
+          data-property-id="demo-003"
+          data-property-slug="apartment-abrasan"
+          data-type="apartment"
+          data-city="tabriz"
+          data-neighborhood="abrasan"
+          data-area="108"
+          data-price="12400000000"
+          data-bedrooms="2"
+          data-deal-type="sale"
+        >
+          <a
+            href="property-3.html"
+            aria-label="مشاهده جزئیات آپارتمان دوخوابه خوش‌قیمت"
+          >
+            <div class="property-image">
+              <img
+                src="{% static 'images/apar.jpg' %}"
+                alt="تصویر آپارتمان دوخوابه خوش‌قیمت"
+                loading="lazy"
+              /><span class="property-tag">قیمت مناسب</span>
+            </div>
+            <div class="property-body">
+              <div class="property-location">⌖ تبریز، آبرسان</div>
+              <h3>آپارتمان دوخوابه خوش‌قیمت</h3>
+              <div class="property-specs">
+                <span>▱ ۱۰۸ متر</span><span>▤ ۲ خواب</span
+                ><span>▣ ۱ پارکینگ</span>
+              </div>
+              <div class="property-bottom">
+                <div class="property-price">
+                  ۱۲٬۴۰۰٬۰۰۰٬۰۰۰ <small>تومان</small>
+                </div>
+                <span class="card-arrow">←</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <article
+          class="property-card"
+          data-property-id="demo-004"
+          data-property-slug="garden-villa-roshdieh"
+          data-type="villa"
+          data-city="tabriz"
+          data-neighborhood="roshdieh"
+          data-area="250"
+          data-price="16000000000"
+          data-bedrooms="3"
+          data-deal-type="sale"
+        >
+          <a
+            href="property-4.html"
+            aria-label="مشاهده جزئیات ویلای باغی با چشم‌انداز سبز"
+          >
+            <div class="property-image">
+              <img
+                src="{% static 'images/v.avif' %}"
+                alt="تصویر ویلای باغی با چشم‌انداز سبز"
+                loading="lazy"
+              /><span class="property-tag">تازه‌وارد</span>
+            </div>
+            <div class="property-body">
+              <div class="property-location">⌖ تبریز، رشدیه</div>
+              <h3>ویلای باغی با چشم‌انداز سبز</h3>
+              <div class="property-specs">
+                <span>▱ ۲۵۰ متر</span><span>▤ ۳ خواب</span
+                ><span>▣ ۲ پارکینگ</span>
+              </div>
+              <div class="property-bottom">
+                <div class="property-price">
+                  ۱۶٬۰۰۰٬۰۰۰٬۰۰۰ <small>تومان</small>
+                </div>
+                <span class="card-arrow">←</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <article
+          class="property-card"
+          data-property-id="demo-005"
+          data-property-slug="new-apartment-el-goli"
+          data-type="apartment"
+          data-city="tabriz"
+          data-neighborhood="el-goli"
+          data-area="92"
+          data-price="8900000000"
+          data-bedrooms="2"
+          data-deal-type="sale"
+        >
+          <a
+            href="property-5.html"
+            aria-label="مشاهده جزئیات واحد نوساز نزدیک به مراکز خرید"
+          >
+            <div class="property-image">
+              <img
+                src="{% static 'images/apart.jpg' %}"
+                alt="تصویر واحد نوساز نزدیک به مراکز خرید"
+                loading="lazy"
+              /><span class="property-tag">نوساز</span>
+            </div>
+            <div class="property-body">
+              <div class="property-location">⌖ تبریز، ائل‌گلی</div>
+              <h3>واحد نوساز نزدیک به مراکز خرید</h3>
+              <div class="property-specs">
+                <span>▱ ۹۲ متر</span><span>▤ ۲ خواب</span
+                ><span>▣ ۱ پارکینگ</span>
+              </div>
+              <div class="property-bottom">
+                <div class="property-price">
+                  ۸٬۹۰۰٬۰۰۰٬۰۰۰ <small>تومان</small>
+                </div>
+                <span class="card-arrow">←</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <article
+          class="property-card"
+          data-property-id="demo-006"
+          data-property-slug="land-basmenj"
+          data-type="land"
+          data-city="tabriz"
+          data-neighborhood="basmenj"
+          data-area="500"
+          data-price="7500000000"
+          data-bedrooms="0"
+          data-deal-type="sale"
+        >
+          <a
+            href="property-6.html"
+            aria-label="مشاهده جزئیات زمین مناسب ساخت‌وساز"
+          >
+            <div class="property-image">
+              <img
+                src="{% static 'images/land.avif' %}"
+                alt="تصویر زمین مناسب ساخت‌وساز"
+                loading="lazy"
+              /><span class="property-tag">فرصت سرمایه‌گذاری</span>
+            </div>
+            <div class="property-body">
+              <div class="property-location">⌖ تبریز، باسمنج</div>
+              <h3>زمین مناسب ساخت‌وساز</h3>
+              <div class="property-specs">
+                <span>▱ ۵۰۰ متر</span><span>▤ — خواب</span
+                ><span>▣ — پارکینگ</span>
+              </div>
+              <div class="property-bottom">
+                <div class="property-price">
+                  ۷٬۵۰۰٬۰۰۰٬۰۰۰ <small>تومان</small>
+                </div>
+                <span class="card-arrow">←</span>
+              </div>
+            </div>
+          </a>
+        </article>
+      </div>
+      <div class="no-results" id="noResults" role="status" hidden>
+        ملکی با این مشخصات پیدا نشد. عبارت جست‌وجو یا فیلترها را تغییر بده.
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container split-section">
+      <div class="split-image">
+        <img
+          src="{% static 'images/int.avif' %}"
+          alt="فضای داخلی خانه‌ای مدرن"
+          loading="lazy"
+        />
+        <div class="image-note">
+          <strong>انتخاب آگاهانه</strong
+          ><span>از بازدید تا امضای قرارداد، کنار شما هستیم.</span>
+        </div>
+      </div>
+      <div class="split-copy">
+        <span class="eyebrow">چرا CIS؟</span>
+        <h2>یک انتخاب خوب،<br />از یک مشاوره‌ی درست شروع می‌شود.</h2>
+        <p>
+          ما فقط فایل معرفی نمی‌کنیم. نیاز شما را می‌شنویم، گزینه‌ها را با
+          جزئیات بررسی می‌کنیم و کمک می‌کنیم با خیال روشن‌تری تصمیم بگیرید.
+        </p>
+        <ul class="check-list">
+          <li>بررسی و معرفی فایل‌های معتبر</li>
+          <li>مشاوره متناسب با بودجه</li>
+          <li>هماهنگی بازدید ملک</li>
+          <li>همراهی تا مراحل قرارداد</li>
+        </ul>
+        <a class="btn btn-primary" href="about.html">بیشتر درباره CIS</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">از مجله CIS</span>
+          <h2>قبل از تصمیم، بیشتر بدانید</h2>
+          <p>نکته‌های کاربردی درباره خرید، فروش و انتخاب هوشمندانه ملک.</p>
+        </div>
+        <a class="text-link" href="magazine.html">همه مقاله‌ها ←</a>
+      </div>
+      <div class="magazine-grid">
+        <article class="article-card">
+          <a href="article-1.html"
+            ><img
+              src="{% static 'images/inter.avif' %}"
+              alt="طراحی داخلی آپارتمان"
+              loading="lazy"
+            />
+            <div class="article-content">
+              <div class="article-meta">
+                <span>راهنمای خرید</span><span>۵ دقیقه مطالعه</span>
+              </div>
+              <h3>قبل از خرید آپارتمان، این ۷ نکته را بررسی کنید</h3>
+              <p>
+                از سند و پارکینگ تا نورگیری و شارژ ساختمان؛ چک‌لیستی برای بازدید
+                دقیق‌تر.
+              </p>
+              <span class="text-link">ادامه مطلب ←</span>
+            </div></a
+          >
+        </article>
+        <article class="article-card">
+          <a href="article-2.html"
+            ><img
+              src="{% static 'images/interior.avif' %}"
+              alt="خانه ویلایی"
+              loading="lazy"
+            />
+            <div class="article-content">
+              <div class="article-meta">
+                <span>سرمایه‌گذاری</span><span>۴ دقیقه مطالعه</span>
+              </div>
+              <h3>برای خرید ویلا در شمال به چه چیزهایی توجه کنیم؟</h3>
+              <p>موقعیت، دسترسی، مدارک و هزینه‌های نگهداری را دست‌کم نگیرید.</p>
+              <span class="text-link">ادامه مطلب ←</span>
+            </div></a
+          >
+        </article>
+        <article class="article-card">
+          <a href="article-3.html"
+            ><img
+              src="{% static 'images/cottage.avif' %}"
+              alt="نمای شهری ساختمان ها"
+              loading="lazy"
+            />
+            <div class="article-content">
+              <div class="article-meta">
+                <span>بازار مسکن</span><span>۶ دقیقه مطالعه</span>
+              </div>
+              <h3>چطور بودجه‌ی واقعی خرید خانه را مشخص کنیم؟</h3>
+              <p>هزینه‌های جانبی معامله را کنار قیمت ملک در نظر بگیرید.</p>
+              <span class="text-link">ادامه مطلب ←</span>
+            </div></a
+          >
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container">
+      <div class="cta-banner">
+        <div>
+          <h2>برای انتخاب خانه‌ی بعدی آماده‌اید؟</h2>
+          <p>
+            نیازتان را با ما در میان بگذارید تا گزینه‌های مناسب را پیدا کنیم.
+          </p>
+        </div>
+        <a class="btn btn-light" href="contact.html"
+          >درخواست مشاوره <span>←</span></a
+        >
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

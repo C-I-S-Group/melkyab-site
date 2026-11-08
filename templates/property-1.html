@@ -1,0 +1,99 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<main data-static-preview="true" data-property-slug="apartment-valiasr">
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">خانه</a> /
+        <a href="index.html#properties">املاک</a> / آپارتمان مدرن با چشم‌انداز
+        شهر
+      </div>
+      <span class="eyebrow">آپارتمان · تبریز</span>
+      <h1 class="detail-page-title">آپارتمان مدرن با چشم‌انداز شهر</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="property-detail-top">
+        <div>
+          <img
+            class="detail-main-photo"
+            src="{% static 'images/apa.jpg' %}"
+            alt="آپارتمان مدرن با چشم‌انداز شهر"
+          />
+          <div class="detail-gallery">
+            <img
+              src="{% static 'images/inter.avif' %}"
+              alt="نمای دیگر ملک"
+              loading="lazy"
+            /><img
+              src="{% static 'images/int.avif' %}"
+              alt="نمای دیگر ملک"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <aside class="detail-summary">
+          <span class="property-tag detail-tag">فروش ویژه</span>
+          <h1>آپارتمان مدرن با چشم‌انداز شهر</h1>
+          <div class="property-location">⌖ تبریز، ولیعصر، خیابان شهریار</div>
+          <div class="big-price">
+            ۱۸٬۵۰۰٬۰۰۰٬۰۰۰ <small>تومان · قیمت اعلامی</small>
+          </div>
+          <div class="summary-specs">
+            <div>متراژ<strong>۱۴۵ متر</strong></div>
+            <div>تعداد اتاق<strong>۳</strong></div>
+            <div>پارکینگ<strong>۱</strong></div>
+            <div>سن بنا<strong>۳ سال</strong></div>
+            <div>موقعیت<strong>تبریز، ولیعصر</strong></div>
+            <div>طبقه<strong>طبقه ۶ از ۸</strong></div>
+          </div>
+          <a
+            class="btn btn-primary"
+            href="contact.html?property=apartment-valiasr&amp;request_type=visit_request"
+            data-property-slug="apartment-valiasr"
+            >درخواست بازدید</a
+          ><a class="btn btn-outline" href="tel:+984135550000"
+            >تماس با دفتر CIS</a
+          >
+        </aside>
+      </div>
+      <div class="detail-content-grid">
+        <div>
+          <section class="detail-section">
+            <h2>درباره این ملک</h2>
+            <p>
+              واحدی خوش‌نقشه با نورگیری عالی، پنجره‌های قدی و طراحی داخلی
+              مینیمال. دسترسی مناسب به مراکز خرید و مسیرهای اصلی از ویژگی‌های
+              این آپارتمان است.
+            </p>
+            <p>
+              برای تصمیم‌گیری نهایی، بازدید حضوری و بررسی اسناد و شرایط ملک
+              ضروری است. اطلاعات و قیمت‌های درج‌شده در این نمونه، محتوای نمایشی
+              پروژه هستند.
+            </p>
+          </section>
+          <section class="detail-section">
+            <h2>امکانات و ویژگی‌ها</h2>
+            <div class="amenities">
+              <div class="amenity">✓ ۱۴۵ متر زیربنا</div>
+              <div class="amenity">✓ ۳ اتاق خواب</div>
+              <div class="amenity">✓ ۱ پارکینگ سندی</div>
+              <div class="amenity">✓ انباری اختصاصی</div>
+              <div class="amenity">✓ آسانسور</div>
+              <div class="amenity">✓ بالکن قابل استفاده</div>
+            </div>
+          </section>
+          <section class="detail-section">
+            <h2>موقعیت ملک</h2>
+            <p>
+              تبریز، ولیعصر، خیابان شهریار. برای دریافت نشانی دقیق و هماهنگی
+              بازدید با دفتر CIS در تماس باشید.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

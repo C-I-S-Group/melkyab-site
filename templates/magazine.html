@@ -1,0 +1,93 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<main>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <div>
+        <div class="breadcrumb"><a href="index.html">خانه</a> / مجله املاک</div>
+        <span class="eyebrow">مجله CIS</span>
+        <h1>دانش بیشتر، تصمیم مطمئن‌تر.</h1>
+        <p>
+          راهنماها و نکته‌های کاربردی برای خرید، فروش و شناخت بهتر بازار مسکن.
+        </p>
+      </div>
+      <img
+        class="page-hero-art"
+        src="{% static 'images/cottage.avif' %}"
+        alt="نمای ساختمان های شهری"
+      />
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">تازه‌های مجله</span>
+          <h2>مطالبی که به کارتان می‌آید</h2>
+          <p>
+            قبل از بازدید، مذاکره یا امضای قرارداد، این مطلب‌ها را مرور کنید.
+          </p>
+        </div>
+      </div>
+      <div class="magazine-grid">
+        <article class="article-card">
+          <a href="article-1.html"
+            ><img
+              src="{% static 'images/inter.avif' %}"
+              alt="اتاق نشیمن روشن"
+              loading="lazy"
+            />
+            <div class="article-content">
+              <div class="article-meta">
+                <span>راهنمای خرید</span><span>۵ دقیقه مطالعه</span>
+              </div>
+              <h3>قبل از خرید آپارتمان، این ۷ نکته را بررسی کنید</h3>
+              <p>
+                از سند و پارکینگ تا نورگیری و شارژ ساختمان؛ چک‌لیستی برای بازدید
+                دقیق‌تر.
+              </p>
+              <span class="text-link">ادامه مطلب ←</span>
+            </div></a
+          >
+        </article>
+        <article class="article-card">
+          <a href="article-2.html"
+            ><img
+              src="{% static 'images/interior.avif' %}"
+              alt="ویلای مدرن"
+              loading="lazy"
+            />
+            <div class="article-content">
+              <div class="article-meta">
+                <span>سرمایه‌گذاری</span><span>۴ دقیقه مطالعه</span>
+              </div>
+              <h3>برای خرید ویلا در اطراف تبریز به چه چیزهایی توجه کنیم؟</h3>
+              <p>
+                موقعیت، دسترسی، مدارک و هزینه‌های نگهداری ویلاهای اطراف تبریز را
+                بررسی کنید.
+              </p>
+              <span class="text-link">ادامه مطلب ←</span>
+            </div></a
+          >
+        </article>
+        <article class="article-card">
+          <a href="article-3.html"
+            ><img
+              src="{% static 'images/cottage.avif' %}"
+              alt="ساختمان های مسکونی"
+              loading="lazy"
+            />
+            <div class="article-content">
+              <div class="article-meta">
+                <span>بازار مسکن</span><span>۶ دقیقه مطالعه</span>
+              </div>
+              <h3>چطور بودجه‌ی واقعی خرید خانه را مشخص کنیم؟</h3>
+              <p>هزینه‌های جانبی معامله را کنار قیمت ملک در نظر بگیرید.</p>
+              <span class="text-link">ادامه مطلب ←</span>
+            </div></a
+          >
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

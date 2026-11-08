@@ -1,0 +1,119 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<main>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <div>
+        <div class="breadcrumb"><a href="index.html">خانه</a> / درباره ما</div>
+        <span class="eyebrow">داستان CIS</span>
+        <h1>ما مسیر رسیدن به خانه را ساده‌تر می‌کنیم.</h1>
+        <p>
+          CIS با یک ایده ساده شکل گرفت: تجربه‌ی خرید و فروش ملک می‌تواند
+          شفاف‌تر، دقیق‌تر و انسانی‌تر باشد.
+        </p>
+      </div>
+      <img
+        class="page-hero-art"
+        src="{% static 'images/v.avif' %}"
+        alt="فضای داخلی خانه"
+      />
+    </div>
+  </section>
+  <section class="section">
+    <div class="container split-section">
+      <div class="split-image">
+        <img src="{% static 'images/int.avif' %}" alt="طراحی داخلی مدرن" />
+        <div class="image-note">
+          <strong>از ۱۳۹۷</strong>
+          <span>همراه انتخاب‌های ملکی شما</span>
+        </div>
+      </div>
+      <div class="split-copy">
+        <span class="eyebrow">ما چه می‌کنیم؟</span>
+        <h2>خانه فقط یک آدرس نیست؛<br />بخشی از زندگی شماست.</h2>
+        <p>
+          تیم CIS تلاش می‌کند با شناخت دقیق‌تر نیاز خریداران و فروشندگان،
+          اطلاعات روشن‌تری ارائه دهد. در معرفی هر ملک، جزئیات مهم را جدی
+          می‌گیریم و به جای زیاد کردن گزینه‌ها، روی مناسب بودن آن‌ها تمرکز
+          می‌کنیم.
+        </p>
+        <p>
+          از اولین گفت‌وگو تا بازدید و پیگیری مراحل معامله، هدف ما این است که
+          تصمیم‌گیری برای شما قابل‌فهم و قابل‌اعتماد باشد.
+        </p>
+        <a class="btn btn-primary" href="contact.html">با ما صحبت کنید</a>
+      </div>
+    </div>
+  </section>
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">اصول کاری ما</span>
+          <h2>چه چیزهایی برایمان مهم است؟</h2>
+          <p>این سه اصل، پایه‌ی رابطه‌ی ما با مشتری‌هاست.</p>
+        </div>
+      </div>
+      <div class="value-grid">
+        <article class="value-card">
+          <span class="value-icon">◎</span>
+          <h3>شفافیت</h3>
+          <p>
+            اطلاعات ملک، شرایط و جزئیات معامله را روشن و بدون ابهام مطرح
+            می‌کنیم.
+          </p>
+        </article>
+        <article class="value-card">
+          <span class="value-icon">◇</span>
+          <h3>شناخت نیاز</h3>
+          <p>
+            قبل از معرفی گزینه، درباره‌ی اولویت‌ها و بودجه‌ی شما دقیق گوش
+            می‌کنیم.
+          </p>
+        </article>
+        <article class="value-card">
+          <span class="value-icon">♧</span>
+          <h3>همراهی</h3>
+          <p>
+            رابطه‌ی ما با معرفی یک فایل تمام نمی‌شود؛ تا رسیدن به تصمیم درست
+            کنار شما می‌مانیم.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">آدم‌های CIS</span>
+          <h2>تیمی که کنار شماست</h2>
+          <p>یک تیم کوچک، پیگیر و آشنا با جزئیات بازار ملک.</p>
+        </div>
+      </div>
+      <div class="team-grid">
+        <article class="team-card">
+          <img src="{% static 'images/mr.jpg' %}" alt="مشاور ارشد" />
+          <div>
+            <h3>میستر دانگر</h3>
+            <p>مدیر و مشاور ارشد</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <img src="{% static 'images/gf.jpg' %}" alt="کارشناس فروش" />
+          <div>
+            <h3>قافای آغ سقل</h3>
+            <p>کارشناس خرید و فروش</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <img src="{% static 'images/ga.jpg' %}" alt="کارشناس املاک" />
+          <div>
+            <h3>قابلی جگون</h3>
+            <p>کارشناس فایل و بازدید</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

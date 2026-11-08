@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="راه‌های ارتباط با مشاوران املاک CIS و ثبت درخواست مشاوره."
+    />
+    <title>تماس با ما | CIS</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="{% url 'home' %}" aria-label="CIS، صفحه اصلی">
+          <span class="brand-mark">C</span>
+          <span
+            ><span class="brand-name">CIS</span
+            ><span class="brand-caption"
+              >CREATIVE INTERFACE SITES • املاک</span
+            ></span
+          >
+        </a>
+        <nav class="main-nav" aria-label="منوی اصلی">
+          <a href="{% url 'home' %}" class="">صفحه اصلی</a
+          ><a href="{% url 'about' %}" class="">درباره ما</a
+          ><a href="{% url 'magazine' %}" class="">مجله املاک</a
+          ><a href="{% url 'contact' %}" class="active">تماس با ما</a>
+        </nav>
+        <div class="header-actions">
+          <form
+            class="header-search site-search"
+            role="search"
+            action="/properties/"
+            method="get"
+            data-preview-mode="true"
+          >
+            <input
+              type="search"
+              name="q"
+              placeholder="جست‌وجوی ملک..."
+              aria-label="جست‌وجوی ملک"
+              autocomplete="off"
+            />
+            <button type="submit" aria-label="جست‌وجو">⌕</button>
+          </form>
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="تغییر حالت رنگ"
+            title="تغییر حالت رنگ"
+          >
+            ☾
+          </button>
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-label="باز کردن منو"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+
+    {% block content %} {% endblock %}
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="brand" href="{% url 'home' %}"
+              ><span class="brand-mark">C</span
+              ><span
+                ><span class="brand-name">CIS</span
+                ><span class="brand-caption"
+                  >CREATIVE INTERFACE SITES • املاک</span
+                ></span
+              ></a
+            >
+            <p>
+              در CIS، پیدا کردن خانه فقط یک معامله نیست؛ شروع فصل تازه‌ای از
+              زندگی است. با شناخت دقیق بازار، همراه انتخاب شما هستیم.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h3>دسترسی سریع</h3>
+            <a href="index.html#properties">مشاهده املاک</a
+            ><a href="{% url 'about' %}">درباره CIS</a
+            ><a href="{% url 'magazine' %}">مجله املاک</a
+            ><a href="{% url 'contact' %}">ارتباط با ما</a>
+          </div>
+          <div class="footer-column">
+            <h3>خدمات ما</h3>
+            <a href="index.html#properties">خرید آپارتمان</a
+            ><a href="index.html#properties">خرید ویلا</a
+            ><a href="index.html#properties">فروش ملک</a
+            ><a href="{% url 'contact' %}">مشاوره تخصصی</a>
+          </div>
+          <div class="footer-column">
+            <h3>راه‌های ارتباطی</h3>
+            <p>تبریز، محله ولیعصر، خیابان فروغی، دفتر CIS (نشانی نمونه)</p>
+            <a href="tel:+984135550000">۰۴۱-۳۵۵۵۰۰۰۰</a
+            ><a href="mailto:info@cis.example">info@cis.example</a>
+            <p>شنبه تا پنجشنبه · ۹ تا ۱۸</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© <span data-year>2026</span> CIS. تمام حقوق محفوظ است.</span
+          ><span>ساخته‌شده با دقت، برای انتخابی مطمئن.</span>
+        </div>
+      </div>
+    </footer>
+    <script src="{% static 'script.js' %}"></script>
+  </body>
+</html>
