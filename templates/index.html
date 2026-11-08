@@ -112,6 +112,8 @@
         </button>
       </div>
       <div class="property-grid" id="propertyGrid" aria-live="polite">
+
+        {% for post in posts %}
         <article
           class="property-card"
           data-property-id="demo-001"
@@ -138,216 +140,20 @@
             </div>
             <div class="property-body">
               <div class="property-location">⌖ تبریز، ولیعصر</div>
-              <h3>آپارتمان مدرن با چشم‌انداز شهر</h3>
+              <h3>{{post.title}}</h3>
               <div class="property-specs">
-                <span>▱ ۱۴۵ متر</span><span>▤ ۳ خواب</span
+                <span>▱ {{area}} متر</span><span>▤ {{post.bedrooms}} خواب</span
                 ><span>▣ ۱ پارکینگ</span>
               </div>
               <div class="property-bottom">
-                <div class="property-price">
-                  ۱۸٬۵۰۰٬۰۰۰٬۰۰۰ <small>تومان</small>
-                </div>
+                <div class="property-price">{{post.price}}<small>تومان</small></div>
                 <span class="card-arrow">←</span>
               </div>
             </div>
           </a>
         </article>
-        <article
-          class="property-card"
-          data-property-id="demo-002"
-          data-property-slug="duplex-villa-baghmisheh"
-          data-type="villa"
-          data-city="tabriz"
-          data-neighborhood="baghmisheh"
-          data-area="320"
-          data-price="42000000000"
-          data-bedrooms="4"
-          data-deal-type="sale"
-        >
-          <a
-            href="property-2.html"
-            aria-label="مشاهده جزئیات ویلای دوبلکس با استخر اختصاصی"
-          >
-            <div class="property-image">
-              <img
-                src="{% static 'images/vila.avif' %}"
-                alt="تصویر ویلای دوبلکس با استخر اختصاصی"
-                loading="lazy"
-              />
-              <span class="property-tag">انتخاب خاص</span>
-            </div>
-            <div class="property-body">
-              <div class="property-location">⌖ تبریز، باغمیشه</div>
-              <h3>ویلای دوبلکس با استخر اختصاصی</h3>
-              <div class="property-specs">
-                <span>▱ ۳۲۰ متر</span><span>▤ ۴ خواب</span
-                ><span>▣ ۲ پارکینگ</span>
-              </div>
-              <div class="property-bottom">
-                <div class="property-price">
-                  ۴۲٬۰۰۰٬۰۰۰٬۰۰۰ <small>تومان</small>
-                </div>
-                <span class="card-arrow">←</span>
-              </div>
-            </div>
-          </a>
-        </article>
-        <article
-          class="property-card"
-          data-property-id="demo-003"
-          data-property-slug="apartment-abrasan"
-          data-type="apartment"
-          data-city="tabriz"
-          data-neighborhood="abrasan"
-          data-area="108"
-          data-price="12400000000"
-          data-bedrooms="2"
-          data-deal-type="sale"
-        >
-          <a
-            href="property-3.html"
-            aria-label="مشاهده جزئیات آپارتمان دوخوابه خوش‌قیمت"
-          >
-            <div class="property-image">
-              <img
-                src="{% static 'images/apar.jpg' %}"
-                alt="تصویر آپارتمان دوخوابه خوش‌قیمت"
-                loading="lazy"
-              /><span class="property-tag">قیمت مناسب</span>
-            </div>
-            <div class="property-body">
-              <div class="property-location">⌖ تبریز، آبرسان</div>
-              <h3>آپارتمان دوخوابه خوش‌قیمت</h3>
-              <div class="property-specs">
-                <span>▱ ۱۰۸ متر</span><span>▤ ۲ خواب</span
-                ><span>▣ ۱ پارکینگ</span>
-              </div>
-              <div class="property-bottom">
-                <div class="property-price">
-                  ۱۲٬۴۰۰٬۰۰۰٬۰۰۰ <small>تومان</small>
-                </div>
-                <span class="card-arrow">←</span>
-              </div>
-            </div>
-          </a>
-        </article>
-        <article
-          class="property-card"
-          data-property-id="demo-004"
-          data-property-slug="garden-villa-roshdieh"
-          data-type="villa"
-          data-city="tabriz"
-          data-neighborhood="roshdieh"
-          data-area="250"
-          data-price="16000000000"
-          data-bedrooms="3"
-          data-deal-type="sale"
-        >
-          <a
-            href="property-4.html"
-            aria-label="مشاهده جزئیات ویلای باغی با چشم‌انداز سبز"
-          >
-            <div class="property-image">
-              <img
-                src="{% static 'images/v.avif' %}"
-                alt="تصویر ویلای باغی با چشم‌انداز سبز"
-                loading="lazy"
-              /><span class="property-tag">تازه‌وارد</span>
-            </div>
-            <div class="property-body">
-              <div class="property-location">⌖ تبریز، رشدیه</div>
-              <h3>ویلای باغی با چشم‌انداز سبز</h3>
-              <div class="property-specs">
-                <span>▱ ۲۵۰ متر</span><span>▤ ۳ خواب</span
-                ><span>▣ ۲ پارکینگ</span>
-              </div>
-              <div class="property-bottom">
-                <div class="property-price">
-                  ۱۶٬۰۰۰٬۰۰۰٬۰۰۰ <small>تومان</small>
-                </div>
-                <span class="card-arrow">←</span>
-              </div>
-            </div>
-          </a>
-        </article>
-        <article
-          class="property-card"
-          data-property-id="demo-005"
-          data-property-slug="new-apartment-el-goli"
-          data-type="apartment"
-          data-city="tabriz"
-          data-neighborhood="el-goli"
-          data-area="92"
-          data-price="8900000000"
-          data-bedrooms="2"
-          data-deal-type="sale"
-        >
-          <a
-            href="property-5.html"
-            aria-label="مشاهده جزئیات واحد نوساز نزدیک به مراکز خرید"
-          >
-            <div class="property-image">
-              <img
-                src="{% static 'images/apart.jpg' %}"
-                alt="تصویر واحد نوساز نزدیک به مراکز خرید"
-                loading="lazy"
-              /><span class="property-tag">نوساز</span>
-            </div>
-            <div class="property-body">
-              <div class="property-location">⌖ تبریز، ائل‌گلی</div>
-              <h3>واحد نوساز نزدیک به مراکز خرید</h3>
-              <div class="property-specs">
-                <span>▱ ۹۲ متر</span><span>▤ ۲ خواب</span
-                ><span>▣ ۱ پارکینگ</span>
-              </div>
-              <div class="property-bottom">
-                <div class="property-price">
-                  ۸٬۹۰۰٬۰۰۰٬۰۰۰ <small>تومان</small>
-                </div>
-                <span class="card-arrow">←</span>
-              </div>
-            </div>
-          </a>
-        </article>
-        <article
-          class="property-card"
-          data-property-id="demo-006"
-          data-property-slug="land-basmenj"
-          data-type="land"
-          data-city="tabriz"
-          data-neighborhood="basmenj"
-          data-area="500"
-          data-price="7500000000"
-          data-bedrooms="0"
-          data-deal-type="sale"
-        >
-          <a
-            href="property-6.html"
-            aria-label="مشاهده جزئیات زمین مناسب ساخت‌وساز"
-          >
-            <div class="property-image">
-              <img
-                src="{% static 'images/land.avif' %}"
-                alt="تصویر زمین مناسب ساخت‌وساز"
-                loading="lazy"
-              /><span class="property-tag">فرصت سرمایه‌گذاری</span>
-            </div>
-            <div class="property-body">
-              <div class="property-location">⌖ تبریز، باسمنج</div>
-              <h3>زمین مناسب ساخت‌وساز</h3>
-              <div class="property-specs">
-                <span>▱ ۵۰۰ متر</span><span>▤ — خواب</span
-                ><span>▣ — پارکینگ</span>
-              </div>
-              <div class="property-bottom">
-                <div class="property-price">
-                  ۷٬۵۰۰٬۰۰۰٬۰۰۰ <small>تومان</small>
-                </div>
-                <span class="card-arrow">←</span>
-              </div>
-            </div>
-          </a>
-        </article>
+        {% endfor %}
+
       </div>
       <div class="no-results" id="noResults" role="status" hidden>
         ملکی با این مشخصات پیدا نشد. عبارت جست‌وجو یا فیلترها را تغییر بده.

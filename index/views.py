@@ -1,10 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from index.models import *
 # Create your views here.
 
 
 def home_view(request):
-    return render(request, 'index.html')
+    posts = List_ads.objects.filter(status=1)
+
+    context = {'posts':posts}
+    return render(request,'index.html',context)
+
+
+
+
 
 
 def contact_view(request):
