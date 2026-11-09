@@ -12,3 +12,4 @@ admin.site.index_title = "به پنل مدیریت خوش آمدید"
 
 
 admin.site.register(List_ads)
+admin.site.register(Property_Type_List)

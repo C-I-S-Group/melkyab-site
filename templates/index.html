@@ -97,6 +97,8 @@
         </div>
         <span id="resultCount" class="muted">۶ ملک</span>
       </div>
+
+
       <div class="property-filters" aria-label="فیلتر نوع ملک">
         <button class="filter-btn active" type="button" data-filter="all">
           همه موارد
@@ -111,8 +113,9 @@
           زمین
         </button>
       </div>
-      <div class="property-grid" id="propertyGrid" aria-live="polite">
 
+      
+      <div class="property-grid" id="propertyGrid" aria-live="polite">
         {% for post in posts %}
         <article
           class="property-card"
@@ -136,24 +139,31 @@
                 alt="تصویر آپارتمان مدرن با چشم‌انداز شهر"
                 loading="lazy"
               />
+              {% if post.special_sale %}
               <span class="property-tag">فروش ویژه</span>
+              {% endif %}
             </div>
             <div class="property-body">
               <div class="property-location">⌖ {{post.address}}</div>
               <h3>{{post.title}}</h3>
               <div class="property-specs">
-                <span>▱ {{post.area}} متر</span><span>▤ {{post.bedrooms}} خواب</span
-                ><span>▣ ۱ پارکینگ</span>
+                <span>▱ {{post.area}} متر</span
+                ><span>▤ {{post.bedrooms}} خواب</span>
+
+                {% if post.has_parking %}
+                <span>▣ پارکینگ</span>
+                {% endif %}
               </div>
               <div class="property-bottom">
-                <div class="property-price">{{post.price}}<small>تومان</small></div>
+                <div class="property-price">
+                  {{post.price}}<small>تومان</small>
+                </div>
                 <span class="card-arrow">←</span>
               </div>
             </div>
           </a>
         </article>
         {% endfor %}
-
       </div>
       <div class="no-results" id="noResults" role="status" hidden>
         ملکی با این مشخصات پیدا نشد. عبارت جست‌وجو یا فیلترها را تغییر بده.
@@ -191,7 +201,6 @@
       </div>
     </div>
   </section>
-
   <section class="section">
     <div class="container">
       <div class="section-heading">
@@ -260,7 +269,6 @@
       </div>
     </div>
   </section>
-
   <section class="section section-soft">
     <div class="container">
       <div class="cta-banner">
