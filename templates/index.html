@@ -53,10 +53,9 @@
           <div class="form-field">
             <label for="typeFilter">نوع ملک</label>
             <select id="typeFilter" name="property_type">
-              <option value="">همه موارد</option>
-              <option value="apartment">آپارتمان</option>
-              <option value="villa">ویلا</option>
-              <option value="land">زمین</option>
+              <option value="آپارتمان">آپارتمان</option>
+              <option value="ویلا">ویلا</option>
+              <option value="زمین">زمین</option>
             </select>
           </div>
           <button class="btn btn-primary" type="submit">
@@ -98,36 +97,29 @@
         <span id="resultCount" class="muted">۶ ملک</span>
       </div>
 
-
       <div class="property-filters" aria-label="فیلتر نوع ملک">
         <button class="filter-btn active" type="button" data-filter="all">
           همه موارد
         </button>
-        <button class="filter-btn" type="button" data-filter="apartment">
+
+        <button class="filter-btn" type="button" data-filter="آپارتمان">
           آپارتمان
         </button>
-        <button class="filter-btn" type="button" data-filter="villa">
+
+        <button class="filter-btn" type="button" data-filter="ویلا">
           ویلا
         </button>
-        <button class="filter-btn" type="button" data-filter="land">
+
+        <button class="filter-btn" type="button" data-filter="زمین">
           زمین
         </button>
       </div>
 
-      
       <div class="property-grid" id="propertyGrid" aria-live="polite">
         {% for post in posts %}
         <article
           class="property-card"
-          data-property-id="demo-001"
-          data-property-slug="apartment-valiasr"
-          data-type="apartment"
-          data-city="tabriz"
-          data-neighborhood="valiasr"
-          data-area="145"
-          data-price="18500000000"
-          data-bedrooms="3"
-          data-deal-type="sale"
+          data-type="{{ post.property_type.property_type_list }}"
         >
           <a
             href="{% url 'property' %}"
