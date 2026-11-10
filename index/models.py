@@ -21,7 +21,7 @@ class List_ads(models.Model):
     address = models.CharField(max_length=10000,verbose_name="آدرس")
     property_type = models.ForeignKey(Property_Type_List,on_delete=models.PROTECT,verbose_name="نوع آگهی")
     bedrooms = models.PositiveSmallIntegerField(verbose_name="تعداد اتاق ها")
-    has_balcony = models.BooleanField(verbose_name="بالکن")
+    has_balcony = models.BooleanField(verbose_name="تراس")
     has_parking = models.BooleanField(verbose_name="پارکینگ")
     has_storage_room = models.BooleanField(verbose_name="انباری")
     descriptions = models.TextField(verbose_name="توضیحات بیشتر")

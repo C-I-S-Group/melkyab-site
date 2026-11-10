@@ -11,5 +11,8 @@ admin.site.site_title = "مدیریت املاک"
 admin.site.index_title = "به پنل مدیریت خوش آمدید"
 
 
-admin.site.register(List_ads)
+class AdminListAds(admin.ModelAdmin):
+    list_display = ['id','title','address','property_type','status','special_sale']
+
+admin.site.register(List_ads,AdminListAds)
 admin.site.register(Property_Type_List)
