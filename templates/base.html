@@ -9,7 +9,7 @@
       name="description"
       content="راه‌های ارتباط با مشاوران املاک CIS و ثبت درخواست مشاوره."
     />
-    <title> مشاوره املاک | CIS</title>
+    <title>مشاوره املاک | CIS</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
@@ -27,7 +27,7 @@
         <nav class="main-nav" aria-label="منوی اصلی">
           <a href="{% url 'home' %}" class="">صفحه اصلی</a
           ><a href="{% url 'about' %}" class="">درباره ما</a
-          ><a href="{% url 'magazine' %}" class="">مجله املاک</a
+          ><a href="{% url 'magazine:home' %}" class="">مجله املاک</a
           ><a href="{% url 'contact' %}" class="active">تماس با ما</a>
         </nav>
         <div class="header-actions">
@@ -91,7 +91,7 @@
             <h3>دسترسی سریع</h3>
             <a href="index.html#properties">مشاهده املاک</a
             ><a href="{% url 'about' %}">درباره CIS</a
-            ><a href="{% url 'magazine' %}">مجله املاک</a
+            ><a href="{% url 'magazine:home' %}">مجله املاک</a
             ><a href="{% url 'contact' %}">ارتباط با ما</a>
           </div>
           <div class="footer-column">
