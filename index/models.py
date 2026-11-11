@@ -2,6 +2,18 @@ from django.db import models
 
 # Create your models here.
 
+
+class Neighborhoods(models.Model):
+    neighborhood = models.CharField(verbose_name="محله", max_length=50)
+    class Meta():
+        verbose_name = "محله"
+        verbose_name_plural = "محله ها"
+
+    def __str__(self):
+        return self.neighborhood
+
+
+
 class Property_Type_List(models.Model):
     property_type_list = models.CharField(max_length=5000,verbose_name="نوع آگهی")
 
@@ -18,7 +30,8 @@ class List_ads(models.Model):
     price = models.PositiveBigIntegerField(verbose_name="قیمت")
     area = models.PositiveIntegerField(verbose_name="متراژ")
     # img = models.ImageField()
-    address = models.CharField(max_length=10000,verbose_name="آدرس")
+    address = models.ForeignKey(Neighborhoods,verbose_name="آدرس",on_delete=models.PROTECT)
+    full_address = models.TextField(verbose_name="آدرس کامل")
     property_type = models.ForeignKey(Property_Type_List,on_delete=models.PROTECT,verbose_name="نوع آگهی")
     bedrooms = models.PositiveSmallIntegerField(verbose_name="تعداد اتاق ها")
     has_balcony = models.BooleanField(verbose_name="تراس")

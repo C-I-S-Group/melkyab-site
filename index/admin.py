@@ -18,3 +18,4 @@ class AdminListAds(admin.ModelAdmin):
 
 admin.site.register(List_ads,AdminListAds)
 admin.site.register(Property_Type_List)
+admin.site.register(Neighborhoods)
