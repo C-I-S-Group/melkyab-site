@@ -4,12 +4,14 @@
   <section class="page-hero">
     <div class="container">
       <div class="breadcrumb">
-        <a href="index.html">خانه</a> /
-        <a href="index.html#properties">املاک</a> / آپارتمان مدرن با چشم‌انداز
-        شهر
+
+        <a href="{% url 'index:home' %}">خانه</a> /
+        <a href="{% url 'index:property' pid=post.id %}">آپارتمان مدرن با چشم‌انداز
+        شهر</a>
+
       </div>
       <span class="eyebrow">آپارتمان · تبریز</span>
-      <h1 class="detail-page-title">آپارتمان مدرن با چشم‌انداز شهر</h1>
+      <h1 class="detail-page-title">{{post.title}}</h1>
     </div>
   </section>
   <section class="section">
@@ -34,19 +36,33 @@
           </div>
         </div>
         <aside class="detail-summary">
-          <span class="property-tag detail-tag">فروش ویژه</span>
-          <h1>آپارتمان مدرن با چشم‌انداز شهر</h1>
-          <div class="property-location">⌖ تبریز، ولیعصر، خیابان شهریار</div>
+
+          {% if post.has_parking %}
+            <span class="property-tag detail-tag">فروش ویژه</span>
+          {% else %}
+                
+          {% endif %}
+
+          <h1>{{post.title}}</h1>
+          <div class="property-location">⌖ تبریز , {{post.address}}</div>
           <div class="big-price">
-            ۱۸٬۵۰۰٬۰۰۰٬۰۰۰ <small>تومان · قیمت اعلامی</small>
+            {{post.price}} <small>تومان · قیمت اعلامی</small>
           </div>
           <div class="summary-specs">
-            <div>متراژ<strong>۱۴۵ متر</strong></div>
-            <div>تعداد اتاق<strong>۳</strong></div>
-            <div>پارکینگ<strong>۱</strong></div>
-            <div>سن بنا<strong>۳ سال</strong></div>
-            <div>موقعیت<strong>تبریز، ولیعصر</strong></div>
-            <div>طبقه<strong>طبقه ۶ از ۸</strong></div>
+            <div>متراژ<strong>{{post.area}} متر</strong></div>
+            <div>تعداد اتاق<strong>{{post.bedrooms}}</strong></div>
+            <div>پارکینگ
+              <strong>
+              {% if post.has_parking %}
+                دارد
+              {% else %}
+                ندارد
+              {% endif %}
+              </strong>
+            </div>
+            <div>سن بنا<strong>{{post.year_of_construction}} سال</strong></div>
+            <div>موقعیت<strong>تبریز، {{post.address}}</strong></div>
+            <div>طبقه<strong>طبقه {{post.the_floor_of}} از {{post.all_floors}}</strong></div>
           </div>
           <a
             class="btn btn-primary"
@@ -62,11 +78,7 @@
         <div>
           <section class="detail-section">
             <h2>درباره این ملک</h2>
-            <p>
-              واحدی خوش‌نقشه با نورگیری عالی، پنجره‌های قدی و طراحی داخلی
-              مینیمال. دسترسی مناسب به مراکز خرید و مسیرهای اصلی از ویژگی‌های
-              این آپارتمان است.
-            </p>
+            <p>{{post.descriptions}}</p>
             <p>
               برای تصمیم‌گیری نهایی، بازدید حضوری و بررسی اسناد و شرایط ملک
               ضروری است. اطلاعات و قیمت‌های درج‌شده در این نمونه، محتوای نمایشی
@@ -76,18 +88,46 @@
           <section class="detail-section">
             <h2>امکانات و ویژگی‌ها</h2>
             <div class="amenities">
-              <div class="amenity">✓ ۱۴۵ متر زیربنا</div>
-              <div class="amenity">✓ ۳ اتاق خواب</div>
-              <div class="amenity">✓ ۱ پارکینگ سندی</div>
-              <div class="amenity">✓ انباری اختصاصی</div>
-              <div class="amenity">✓ آسانسور</div>
-              <div class="amenity">✓ بالکن قابل استفاده</div>
+              <div class="amenity">✓ {{post.area}} متر زیربنا</div>
+              <div class="amenity">✓ {{post.bedrooms}} اتاق خواب</div>
+
+              {% if post.has_parking %}
+                <div class="amenity">✓  پارکینگ </div>
+              {% else %}
+                
+              {% endif %}
+
+
+
+              {% if post.has_parking %}
+                <div class="amenity">✓ انباری اختصاصی</div>
+              {% else %}
+
+              {% endif %}
+
+              {% if post.has_parking %}
+                <div class="amenity">✓ آسانسور</div>
+              {% else %}
+                
+              {% endif %}
+
+
+              <strong>
+              {% if post.has_parking %}
+                <div class="amenity">✓ بالکن </div>
+              {% else %}
+                
+              {% endif %}
+
+
             </div>
           </section>
           <section class="detail-section">
             <h2>موقعیت ملک</h2>
             <p>
-              تبریز، ولیعصر، خیابان شهریار. برای دریافت نشانی دقیق و هماهنگی
+              تبریز ، {{post.address}}
+              <br/>
+               برای دریافت نشانی دقیق و هماهنگی
               بازدید با دفتر CIS در تماس باشید.
             </p>
           </section>

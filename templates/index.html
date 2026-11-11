@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %} {% load humanize %}
 <main>
   <section class="hero">
     <div class="container">
@@ -122,7 +122,7 @@
           data-type="{{ post.property_type.property_type_list }}"
         >
           <a
-            href="{% url 'property' %}"
+            href="{% url 'index:property' pid=post.id %}"
             aria-label="مشاهده جزئیات آپارتمان مدرن با چشم‌انداز شهر"
           >
             <div class="property-image">
@@ -148,7 +148,7 @@
               </div>
               <div class="property-bottom">
                 <div class="property-price">
-                  {{post.price}}<small>تومان</small>
+                  {{ post.price|intcomma }}<small>تومان</small>
                 </div>
                 <span class="card-arrow">←</span>
               </div>
