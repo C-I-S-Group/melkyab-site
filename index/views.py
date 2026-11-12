@@ -11,7 +11,8 @@ def home_view(request):
     return render(request,'index.html',context)
 
 def property_view(request,pid):
-    post = get_object_or_404(List_ads,pk=pid)
+    posts = List_ads.objects.filter(status=1)
+    post = get_object_or_404(posts,pk=pid)
     context = {'post':post}
     return render(request,'property-1.html',context)
 
