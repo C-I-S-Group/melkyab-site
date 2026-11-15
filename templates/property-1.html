@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %} {% load humanize %}
 
 <main data-static-preview="true" data-property-slug="apartment-valiasr">
   <section class="page-hero">
@@ -46,7 +46,7 @@
           <h1>{{post.title}}</h1>
           <div class="property-location">⌖ تبریز , {{post.address}}</div>
           <div class="big-price">
-            {{post.price}} <small>تومان · قیمت اعلامی</small>
+            {{post.price|intcomma}} <small>تومان · قیمت اعلامی</small>
           </div>
           <div class="summary-specs">
             <div>متراژ<strong>{{post.area}} متر</strong></div>

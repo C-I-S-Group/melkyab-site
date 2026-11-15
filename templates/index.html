@@ -126,14 +126,20 @@
             aria-label="مشاهده جزئیات آپارتمان مدرن با چشم‌انداز شهر"
           >
             <div class="property-image">
-              <img
-                src="{% static 'images/apa.jpg' %}"
-                alt="تصویر آپارتمان مدرن با چشم‌انداز شهر"
-                loading="lazy"
-              />
-              {% if post.special_sale %}
-              <span class="property-tag">فروش ویژه</span>
-              {% endif %}
+                {% with first_image=post.images.first %}
+                    {% if first_image %}
+                        <img src="{{ first_image.image.url }}"
+                            alt="{{ post.title }}"
+                            loading="lazy">
+                    {% else %}
+                        <img src="{% static 'images/default.jpg' %}"
+                            alt="تصویر پیش‌فرض">
+                    {% endif %}
+                {% endwith %}
+
+                {% if post.special_sale %}
+                    <span class="property-tag">فروش ویژه</span>
+                {% endif %}
             </div>
             <div class="property-body">
               <div class="property-location">⌖ تبریز {{post.address}}</div>

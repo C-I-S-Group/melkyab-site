@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from index.models import *
+from index.forms import FormConntact
 # Create your views here.
 
 
@@ -18,7 +19,14 @@ def property_view(request,pid):
 
 
 def contact_view(request):
-    return render(request, 'contact.html')
+    if request.method =='POST':
+        form = FormConntact(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = FormConntact()
+    context = {"form":form}
+    return render(request,'contact.html',context)
 
 def about_view(request):
     return render(request, 'about.html')

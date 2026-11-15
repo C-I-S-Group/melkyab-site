@@ -170,16 +170,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    const contactForm = document.querySelector("#contactForm");
-    const formMessage = document.querySelector("#formMessage");
-    if (contactForm && contactForm.dataset.previewMode === "true" && formMessage) {
-        contactForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            if (!contactForm.reportValidity()) return;
-            formMessage.hidden = false;
-            formMessage.textContent = "این نسخه فقط پیش‌نمایش فرانت‌اند است؛ اطلاعات شما ارسال یا ذخیره نشد. پس از اتصال بک‌اند، ثبت درخواست فعال می‌شود.";
-        });
-    }
+    // const contactForm = document.querySelector("#contactForm");
+    // const formMessage = document.querySelector("#formMessage");
+    // if (contactForm && contactForm.dataset.previewMode === "true" && formMessage) {
+    //     contactForm.addEventListener("submit", function (event) {
+    //         event.preventDefault();
+    //         if (!contactForm.reportValidity()) return;
+    //         formMessage.hidden = false;
+    //         formMessage.textContent = "این نسخه فقط پیش‌نمایش فرانت‌اند است؛ اطلاعات شما ارسال یا ذخیره نشد. پس از اتصال بک‌اند، ثبت درخواست فعال می‌شود.";
+    //     });
+    // }
 
 
     const propertySlugInput = document.querySelector("#propertySlug");

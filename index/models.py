@@ -31,7 +31,6 @@ class List_ads(models.Model):
     title = models.CharField(max_length=1000,verbose_name="عنوان آگهی")
     price = models.PositiveBigIntegerField(verbose_name="قیمت")
     area = models.PositiveIntegerField(verbose_name="متراژ")
-    # img = models.ImageField()
     address = models.ForeignKey(Neighborhoods,verbose_name="آدرس",on_delete=models.PROTECT)
     full_address = models.TextField(verbose_name="آدرس کامل")
     property_type = models.ForeignKey(Property_Type_List,on_delete=models.PROTECT,verbose_name="نوع آگهی")
@@ -60,3 +59,24 @@ class List_ads(models.Model):
                 'the_floor_of': 'باید کوچک تر مساوی از کل طبقه ها باشد .'
             })
 
+
+class Property_Image(models.Model):
+    property = models.ForeignKey(List_ads,on_delete=models.CASCADE,related_name='images')
+    image = models.ImageField(upload_to='ads/',default='default.jpg')
+
+
+class Conntact(models.Model):
+
+    subject_list = [
+        ('buy', 'مشاوره خرید'),
+        ('sell', 'مشاوره فروش'),
+        ('views', 'درخواست بازدید'),
+        ('others', 'سایر موارد'),]
+    username = models.CharField(max_length=255)
+    phone=models.CharField(max_length=11)
+    email = models.EmailField()
+    subject = models.CharField(max_length=255,choices=subject_list)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.subject
